@@ -17,14 +17,24 @@ import { Route as RoadmapRouteImport } from './routes/roadmap'
 import { Route as BukuIndexRouteImport } from './routes/buku.index'
 import { Route as BukuPencarianRouteImport } from './routes/buku.pencarian'
 import { Route as FiturSlugRouteImport } from './routes/fitur.$slug'
+import { Route as GambarIndexRouteImport } from './routes/gambar.index'
+import { Route as GambarSemuaRouteImport } from './routes/gambar.semua'
 import { Route as HangeulIndexRouteImport } from './routes/hangeul.index'
 import { Route as HangeulAngkaRouteImport } from './routes/hangeul.angka'
 import { Route as HangeulMataUangRouteImport } from './routes/hangeul.mata-uang'
 import { Route as HangeulSatuanRouteImport } from './routes/hangeul.satuan'
 import { Route as HangeulVokalKonsonanRouteImport } from './routes/hangeul.vokal-konsonan'
+import { Route as KosaKataIndexRouteImport } from './routes/kosa-kata.index'
+import { Route as KosaKataAntonimRouteImport } from './routes/kosa-kata.antonim'
+import { Route as KosaKataSemuaRouteImport } from './routes/kosa-kata.semua'
+import { Route as KosaKataSinonimRouteImport } from './routes/kosa-kata.sinonim'
 import { Route as ApiPublicTtsRouteImport } from './routes/api/public/tts'
 import { Route as BukuTahunIndexRouteImport } from './routes/buku.$tahun.index'
 import { Route as BukuTahunBabRouteImport } from './routes/buku.$tahun.$bab'
+import { Route as GambarBukuTahunIndexRouteImport } from './routes/gambar.buku.$tahun.index'
+import { Route as GambarBukuTahunBabRouteImport } from './routes/gambar.buku.$tahun.$bab'
+import { Route as KosaKataBukuTahunIndexRouteImport } from './routes/kosa-kata.buku.$tahun.index'
+import { Route as KosaKataBukuTahunBabRouteImport } from './routes/kosa-kata.buku.$tahun.$bab'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -66,6 +76,16 @@ const FiturSlugRoute = FiturSlugRouteImport.update({
   path: '/fitur/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GambarIndexRoute = GambarIndexRouteImport.update({
+  id: '/gambar/',
+  path: '/gambar/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GambarSemuaRoute = GambarSemuaRouteImport.update({
+  id: '/gambar/semua',
+  path: '/gambar/semua',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HangeulIndexRoute = HangeulIndexRouteImport.update({
   id: '/hangeul/',
   path: '/hangeul/',
@@ -91,6 +111,26 @@ const HangeulVokalKonsonanRoute = HangeulVokalKonsonanRouteImport.update({
   path: '/hangeul/vokal-konsonan',
   getParentRoute: () => rootRouteImport,
 } as any)
+const KosaKataIndexRoute = KosaKataIndexRouteImport.update({
+  id: '/kosa-kata/',
+  path: '/kosa-kata/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KosaKataAntonimRoute = KosaKataAntonimRouteImport.update({
+  id: '/kosa-kata/antonim',
+  path: '/kosa-kata/antonim',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KosaKataSemuaRoute = KosaKataSemuaRouteImport.update({
+  id: '/kosa-kata/semua',
+  path: '/kosa-kata/semua',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KosaKataSinonimRoute = KosaKataSinonimRouteImport.update({
+  id: '/kosa-kata/sinonim',
+  path: '/kosa-kata/sinonim',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicTtsRoute = ApiPublicTtsRouteImport.update({
   id: '/api/public/tts',
   path: '/api/public/tts',
@@ -106,6 +146,26 @@ const BukuTahunBabRoute = BukuTahunBabRouteImport.update({
   path: '/buku/$tahun/$bab',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GambarBukuTahunIndexRoute = GambarBukuTahunIndexRouteImport.update({
+  id: '/gambar/buku/$tahun/',
+  path: '/gambar/buku/$tahun/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GambarBukuTahunBabRoute = GambarBukuTahunBabRouteImport.update({
+  id: '/gambar/buku/$tahun/$bab',
+  path: '/gambar/buku/$tahun/$bab',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KosaKataBukuTahunIndexRoute = KosaKataBukuTahunIndexRouteImport.update({
+  id: '/kosa-kata/buku/$tahun/',
+  path: '/kosa-kata/buku/$tahun/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KosaKataBukuTahunBabRoute = KosaKataBukuTahunBabRouteImport.update({
+  id: '/kosa-kata/buku/$tahun/$bab',
+  path: '/kosa-kata/buku/$tahun/$bab',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -115,15 +175,25 @@ export interface FileRoutesByFullPath {
   '/roadmap': typeof RoadmapRoute
   '/buku/pencarian': typeof BukuPencarianRoute
   '/fitur/$slug': typeof FiturSlugRoute
+  '/gambar/semua': typeof GambarSemuaRoute
   '/hangeul/angka': typeof HangeulAngkaRoute
   '/hangeul/mata-uang': typeof HangeulMataUangRoute
   '/hangeul/satuan': typeof HangeulSatuanRoute
   '/hangeul/vokal-konsonan': typeof HangeulVokalKonsonanRoute
+  '/kosa-kata/antonim': typeof KosaKataAntonimRoute
+  '/kosa-kata/semua': typeof KosaKataSemuaRoute
+  '/kosa-kata/sinonim': typeof KosaKataSinonimRoute
   '/buku/': typeof BukuIndexRoute
+  '/gambar/': typeof GambarIndexRoute
   '/hangeul/': typeof HangeulIndexRoute
+  '/kosa-kata/': typeof KosaKataIndexRoute
   '/api/public/tts': typeof ApiPublicTtsRoute
   '/buku/$tahun/$bab': typeof BukuTahunBabRoute
   '/buku/$tahun/': typeof BukuTahunIndexRoute
+  '/gambar/buku/$tahun/$bab': typeof GambarBukuTahunBabRoute
+  '/kosa-kata/buku/$tahun/$bab': typeof KosaKataBukuTahunBabRoute
+  '/gambar/buku/$tahun/': typeof GambarBukuTahunIndexRoute
+  '/kosa-kata/buku/$tahun/': typeof KosaKataBukuTahunIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -133,15 +203,25 @@ export interface FileRoutesByTo {
   '/roadmap': typeof RoadmapRoute
   '/buku/pencarian': typeof BukuPencarianRoute
   '/fitur/$slug': typeof FiturSlugRoute
+  '/gambar/semua': typeof GambarSemuaRoute
   '/hangeul/angka': typeof HangeulAngkaRoute
   '/hangeul/mata-uang': typeof HangeulMataUangRoute
   '/hangeul/satuan': typeof HangeulSatuanRoute
   '/hangeul/vokal-konsonan': typeof HangeulVokalKonsonanRoute
+  '/kosa-kata/antonim': typeof KosaKataAntonimRoute
+  '/kosa-kata/semua': typeof KosaKataSemuaRoute
+  '/kosa-kata/sinonim': typeof KosaKataSinonimRoute
   '/buku': typeof BukuIndexRoute
+  '/gambar': typeof GambarIndexRoute
   '/hangeul': typeof HangeulIndexRoute
+  '/kosa-kata': typeof KosaKataIndexRoute
   '/api/public/tts': typeof ApiPublicTtsRoute
   '/buku/$tahun/$bab': typeof BukuTahunBabRoute
   '/buku/$tahun': typeof BukuTahunIndexRoute
+  '/gambar/buku/$tahun/$bab': typeof GambarBukuTahunBabRoute
+  '/kosa-kata/buku/$tahun/$bab': typeof KosaKataBukuTahunBabRoute
+  '/gambar/buku/$tahun': typeof GambarBukuTahunIndexRoute
+  '/kosa-kata/buku/$tahun': typeof KosaKataBukuTahunIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -152,15 +232,25 @@ export interface FileRoutesById {
   '/roadmap': typeof RoadmapRoute
   '/buku/pencarian': typeof BukuPencarianRoute
   '/fitur/$slug': typeof FiturSlugRoute
+  '/gambar/semua': typeof GambarSemuaRoute
   '/hangeul/angka': typeof HangeulAngkaRoute
   '/hangeul/mata-uang': typeof HangeulMataUangRoute
   '/hangeul/satuan': typeof HangeulSatuanRoute
   '/hangeul/vokal-konsonan': typeof HangeulVokalKonsonanRoute
+  '/kosa-kata/antonim': typeof KosaKataAntonimRoute
+  '/kosa-kata/semua': typeof KosaKataSemuaRoute
+  '/kosa-kata/sinonim': typeof KosaKataSinonimRoute
   '/buku/': typeof BukuIndexRoute
+  '/gambar/': typeof GambarIndexRoute
   '/hangeul/': typeof HangeulIndexRoute
+  '/kosa-kata/': typeof KosaKataIndexRoute
   '/api/public/tts': typeof ApiPublicTtsRoute
   '/buku/$tahun/$bab': typeof BukuTahunBabRoute
   '/buku/$tahun/': typeof BukuTahunIndexRoute
+  '/gambar/buku/$tahun/$bab': typeof GambarBukuTahunBabRoute
+  '/kosa-kata/buku/$tahun/$bab': typeof KosaKataBukuTahunBabRoute
+  '/gambar/buku/$tahun/': typeof GambarBukuTahunIndexRoute
+  '/kosa-kata/buku/$tahun/': typeof KosaKataBukuTahunIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -172,15 +262,25 @@ export interface FileRouteTypes {
     | '/roadmap'
     | '/buku/pencarian'
     | '/fitur/$slug'
+    | '/gambar/semua'
     | '/hangeul/angka'
     | '/hangeul/mata-uang'
     | '/hangeul/satuan'
     | '/hangeul/vokal-konsonan'
+    | '/kosa-kata/antonim'
+    | '/kosa-kata/semua'
+    | '/kosa-kata/sinonim'
     | '/buku/'
+    | '/gambar/'
     | '/hangeul/'
+    | '/kosa-kata/'
     | '/api/public/tts'
     | '/buku/$tahun/$bab'
     | '/buku/$tahun/'
+    | '/gambar/buku/$tahun/$bab'
+    | '/kosa-kata/buku/$tahun/$bab'
+    | '/gambar/buku/$tahun/'
+    | '/kosa-kata/buku/$tahun/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -190,15 +290,25 @@ export interface FileRouteTypes {
     | '/roadmap'
     | '/buku/pencarian'
     | '/fitur/$slug'
+    | '/gambar/semua'
     | '/hangeul/angka'
     | '/hangeul/mata-uang'
     | '/hangeul/satuan'
     | '/hangeul/vokal-konsonan'
+    | '/kosa-kata/antonim'
+    | '/kosa-kata/semua'
+    | '/kosa-kata/sinonim'
     | '/buku'
+    | '/gambar'
     | '/hangeul'
+    | '/kosa-kata'
     | '/api/public/tts'
     | '/buku/$tahun/$bab'
     | '/buku/$tahun'
+    | '/gambar/buku/$tahun/$bab'
+    | '/kosa-kata/buku/$tahun/$bab'
+    | '/gambar/buku/$tahun'
+    | '/kosa-kata/buku/$tahun'
   id:
     | '__root__'
     | '/'
@@ -208,15 +318,25 @@ export interface FileRouteTypes {
     | '/roadmap'
     | '/buku/pencarian'
     | '/fitur/$slug'
+    | '/gambar/semua'
     | '/hangeul/angka'
     | '/hangeul/mata-uang'
     | '/hangeul/satuan'
     | '/hangeul/vokal-konsonan'
+    | '/kosa-kata/antonim'
+    | '/kosa-kata/semua'
+    | '/kosa-kata/sinonim'
     | '/buku/'
+    | '/gambar/'
     | '/hangeul/'
+    | '/kosa-kata/'
     | '/api/public/tts'
     | '/buku/$tahun/$bab'
     | '/buku/$tahun/'
+    | '/gambar/buku/$tahun/$bab'
+    | '/kosa-kata/buku/$tahun/$bab'
+    | '/gambar/buku/$tahun/'
+    | '/kosa-kata/buku/$tahun/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -227,15 +347,25 @@ export interface RootRouteChildren {
   RoadmapRoute: typeof RoadmapRoute
   BukuPencarianRoute: typeof BukuPencarianRoute
   FiturSlugRoute: typeof FiturSlugRoute
+  GambarSemuaRoute: typeof GambarSemuaRoute
   HangeulAngkaRoute: typeof HangeulAngkaRoute
   HangeulMataUangRoute: typeof HangeulMataUangRoute
   HangeulSatuanRoute: typeof HangeulSatuanRoute
   HangeulVokalKonsonanRoute: typeof HangeulVokalKonsonanRoute
+  KosaKataAntonimRoute: typeof KosaKataAntonimRoute
+  KosaKataSemuaRoute: typeof KosaKataSemuaRoute
+  KosaKataSinonimRoute: typeof KosaKataSinonimRoute
   BukuIndexRoute: typeof BukuIndexRoute
+  GambarIndexRoute: typeof GambarIndexRoute
   HangeulIndexRoute: typeof HangeulIndexRoute
+  KosaKataIndexRoute: typeof KosaKataIndexRoute
   ApiPublicTtsRoute: typeof ApiPublicTtsRoute
   BukuTahunBabRoute: typeof BukuTahunBabRoute
   BukuTahunIndexRoute: typeof BukuTahunIndexRoute
+  GambarBukuTahunBabRoute: typeof GambarBukuTahunBabRoute
+  KosaKataBukuTahunBabRoute: typeof KosaKataBukuTahunBabRoute
+  GambarBukuTahunIndexRoute: typeof GambarBukuTahunIndexRoute
+  KosaKataBukuTahunIndexRoute: typeof KosaKataBukuTahunIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -296,6 +426,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FiturSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/gambar/': {
+      id: '/gambar/'
+      path: '/gambar'
+      fullPath: '/gambar/'
+      preLoaderRoute: typeof GambarIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gambar/semua': {
+      id: '/gambar/semua'
+      path: '/gambar/semua'
+      fullPath: '/gambar/semua'
+      preLoaderRoute: typeof GambarSemuaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/hangeul/': {
       id: '/hangeul/'
       path: '/hangeul'
@@ -331,6 +475,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HangeulVokalKonsonanRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/kosa-kata/': {
+      id: '/kosa-kata/'
+      path: '/kosa-kata'
+      fullPath: '/kosa-kata/'
+      preLoaderRoute: typeof KosaKataIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kosa-kata/antonim': {
+      id: '/kosa-kata/antonim'
+      path: '/kosa-kata/antonim'
+      fullPath: '/kosa-kata/antonim'
+      preLoaderRoute: typeof KosaKataAntonimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kosa-kata/semua': {
+      id: '/kosa-kata/semua'
+      path: '/kosa-kata/semua'
+      fullPath: '/kosa-kata/semua'
+      preLoaderRoute: typeof KosaKataSemuaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kosa-kata/sinonim': {
+      id: '/kosa-kata/sinonim'
+      path: '/kosa-kata/sinonim'
+      fullPath: '/kosa-kata/sinonim'
+      preLoaderRoute: typeof KosaKataSinonimRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/tts': {
       id: '/api/public/tts'
       path: '/api/public/tts'
@@ -352,6 +524,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BukuTahunBabRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/gambar/buku/$tahun/': {
+      id: '/gambar/buku/$tahun/'
+      path: '/gambar/buku/$tahun'
+      fullPath: '/gambar/buku/$tahun/'
+      preLoaderRoute: typeof GambarBukuTahunIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gambar/buku/$tahun/$bab': {
+      id: '/gambar/buku/$tahun/$bab'
+      path: '/gambar/buku/$tahun/$bab'
+      fullPath: '/gambar/buku/$tahun/$bab'
+      preLoaderRoute: typeof GambarBukuTahunBabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kosa-kata/buku/$tahun/': {
+      id: '/kosa-kata/buku/$tahun/'
+      path: '/kosa-kata/buku/$tahun'
+      fullPath: '/kosa-kata/buku/$tahun/'
+      preLoaderRoute: typeof KosaKataBukuTahunIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kosa-kata/buku/$tahun/$bab': {
+      id: '/kosa-kata/buku/$tahun/$bab'
+      path: '/kosa-kata/buku/$tahun/$bab'
+      fullPath: '/kosa-kata/buku/$tahun/$bab'
+      preLoaderRoute: typeof KosaKataBukuTahunBabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -363,15 +563,25 @@ const rootRouteChildren: RootRouteChildren = {
   RoadmapRoute: RoadmapRoute,
   BukuPencarianRoute: BukuPencarianRoute,
   FiturSlugRoute: FiturSlugRoute,
+  GambarSemuaRoute: GambarSemuaRoute,
   HangeulAngkaRoute: HangeulAngkaRoute,
   HangeulMataUangRoute: HangeulMataUangRoute,
   HangeulSatuanRoute: HangeulSatuanRoute,
   HangeulVokalKonsonanRoute: HangeulVokalKonsonanRoute,
+  KosaKataAntonimRoute: KosaKataAntonimRoute,
+  KosaKataSemuaRoute: KosaKataSemuaRoute,
+  KosaKataSinonimRoute: KosaKataSinonimRoute,
   BukuIndexRoute: BukuIndexRoute,
+  GambarIndexRoute: GambarIndexRoute,
   HangeulIndexRoute: HangeulIndexRoute,
+  KosaKataIndexRoute: KosaKataIndexRoute,
   ApiPublicTtsRoute: ApiPublicTtsRoute,
   BukuTahunBabRoute: BukuTahunBabRoute,
   BukuTahunIndexRoute: BukuTahunIndexRoute,
+  GambarBukuTahunBabRoute: GambarBukuTahunBabRoute,
+  KosaKataBukuTahunBabRoute: KosaKataBukuTahunBabRoute,
+  GambarBukuTahunIndexRoute: GambarBukuTahunIndexRoute,
+  KosaKataBukuTahunIndexRoute: KosaKataBukuTahunIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
