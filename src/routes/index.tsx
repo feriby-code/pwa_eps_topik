@@ -46,7 +46,7 @@ function Index() {
           <div className="mb-4 flex items-center justify-between"><h2 className="font-display text-lg font-extrabold">Menu Cepat</h2><span className="text-xs font-bold text-primary">Lanjut belajar</span></div>
           <div className="grid gap-3 sm:grid-cols-3">
             {quickMenus.map((item) => { const Icon = item.icon; return (
-              <Link key={item.label} {...(item.slug === "buku" ? { to: "/buku" as const } : item.slug === "huruf-hangeul" ? { to: "/hangeul" as const } : { to: "/fitur/$slug" as const, params: { slug: item.slug } })} className="group flex min-w-0 items-center gap-3 rounded-xl border border-border bg-surface p-4 shadow-soft transition-transform hover:-translate-y-0.5">
+              <Link key={item.label} {...(item.slug === "buku" ? { to: "/buku" as const } : item.slug === "huruf-hangeul" ? { to: "/hangeul" as const } : { to: "/kosa-kata" as const })} className="group flex min-w-0 items-center gap-3 rounded-xl border border-border bg-surface p-4 shadow-soft transition-transform hover:-translate-y-0.5">
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary-soft text-primary"><Icon className="h-5 w-5" /></span>
                 <span className="min-w-0 flex-1"><strong className="block truncate text-sm">{item.label}</strong><span className="mt-0.5 block truncate text-xs text-muted-foreground">{item.detail}</span></span>
                 <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-1" />
@@ -58,7 +58,7 @@ function Index() {
         <section className="mt-9">
           <h2 className="mb-4 font-display text-lg font-extrabold">Menu Utama</h2>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-            {mainMenus.map((item) => { const Icon = item.icon; const linkProps = item.slug === "buku" ? { to: "/buku" as const } : item.slug === "huruf-hangeul" ? { to: "/hangeul" as const } : { to: "/fitur/$slug" as const, params: { slug: item.slug } }; return (
+            {mainMenus.map((item) => { const Icon = item.icon; const linkProps = item.slug === "buku" ? { to: "/buku" as const } : item.slug === "huruf-hangeul" ? { to: "/hangeul" as const } : item.slug === "kosa-kata" ? { to: "/kosa-kata" as const } : { to: "/fitur/$slug" as const, params: { slug: item.slug } }; return (
               <Link key={item.slug} {...linkProps} className={`group min-h-36 rounded-2xl border border-border bg-surface p-4 shadow-soft transition-all hover:-translate-y-1 hover:border-primary/30 tone-${item.tone}`}>
                 <span className="grid h-12 w-12 place-items-center rounded-xl bg-primary-soft text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground"><Icon className="h-6 w-6" /></span>
                 <h3 className="mt-4 font-display text-sm font-extrabold leading-5">{item.label}</h3>
