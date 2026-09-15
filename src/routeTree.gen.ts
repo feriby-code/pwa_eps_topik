@@ -28,6 +28,8 @@ import { Route as KosaKataIndexRouteImport } from './routes/kosa-kata.index'
 import { Route as KosaKataAntonimRouteImport } from './routes/kosa-kata.antonim'
 import { Route as KosaKataSemuaRouteImport } from './routes/kosa-kata.semua'
 import { Route as KosaKataSinonimRouteImport } from './routes/kosa-kata.sinonim'
+import { Route as TataBahasaIndexRouteImport } from './routes/tata-bahasa.index'
+import { Route as TataBahasaSlugRouteImport } from './routes/tata-bahasa.$slug'
 import { Route as ApiPublicTtsRouteImport } from './routes/api/public/tts'
 import { Route as BukuTahunIndexRouteImport } from './routes/buku.$tahun.index'
 import { Route as BukuTahunBabRouteImport } from './routes/buku.$tahun.$bab'
@@ -131,6 +133,16 @@ const KosaKataSinonimRoute = KosaKataSinonimRouteImport.update({
   path: '/kosa-kata/sinonim',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TataBahasaIndexRoute = TataBahasaIndexRouteImport.update({
+  id: '/tata-bahasa/',
+  path: '/tata-bahasa/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TataBahasaSlugRoute = TataBahasaSlugRouteImport.update({
+  id: '/tata-bahasa/$slug',
+  path: '/tata-bahasa/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicTtsRoute = ApiPublicTtsRouteImport.update({
   id: '/api/public/tts',
   path: '/api/public/tts',
@@ -183,10 +195,12 @@ export interface FileRoutesByFullPath {
   '/kosa-kata/antonim': typeof KosaKataAntonimRoute
   '/kosa-kata/semua': typeof KosaKataSemuaRoute
   '/kosa-kata/sinonim': typeof KosaKataSinonimRoute
+  '/tata-bahasa/$slug': typeof TataBahasaSlugRoute
   '/buku/': typeof BukuIndexRoute
   '/gambar/': typeof GambarIndexRoute
   '/hangeul/': typeof HangeulIndexRoute
   '/kosa-kata/': typeof KosaKataIndexRoute
+  '/tata-bahasa/': typeof TataBahasaIndexRoute
   '/api/public/tts': typeof ApiPublicTtsRoute
   '/buku/$tahun/$bab': typeof BukuTahunBabRoute
   '/buku/$tahun/': typeof BukuTahunIndexRoute
@@ -211,10 +225,12 @@ export interface FileRoutesByTo {
   '/kosa-kata/antonim': typeof KosaKataAntonimRoute
   '/kosa-kata/semua': typeof KosaKataSemuaRoute
   '/kosa-kata/sinonim': typeof KosaKataSinonimRoute
+  '/tata-bahasa/$slug': typeof TataBahasaSlugRoute
   '/buku': typeof BukuIndexRoute
   '/gambar': typeof GambarIndexRoute
   '/hangeul': typeof HangeulIndexRoute
   '/kosa-kata': typeof KosaKataIndexRoute
+  '/tata-bahasa': typeof TataBahasaIndexRoute
   '/api/public/tts': typeof ApiPublicTtsRoute
   '/buku/$tahun/$bab': typeof BukuTahunBabRoute
   '/buku/$tahun': typeof BukuTahunIndexRoute
@@ -240,10 +256,12 @@ export interface FileRoutesById {
   '/kosa-kata/antonim': typeof KosaKataAntonimRoute
   '/kosa-kata/semua': typeof KosaKataSemuaRoute
   '/kosa-kata/sinonim': typeof KosaKataSinonimRoute
+  '/tata-bahasa/$slug': typeof TataBahasaSlugRoute
   '/buku/': typeof BukuIndexRoute
   '/gambar/': typeof GambarIndexRoute
   '/hangeul/': typeof HangeulIndexRoute
   '/kosa-kata/': typeof KosaKataIndexRoute
+  '/tata-bahasa/': typeof TataBahasaIndexRoute
   '/api/public/tts': typeof ApiPublicTtsRoute
   '/buku/$tahun/$bab': typeof BukuTahunBabRoute
   '/buku/$tahun/': typeof BukuTahunIndexRoute
@@ -270,10 +288,12 @@ export interface FileRouteTypes {
     | '/kosa-kata/antonim'
     | '/kosa-kata/semua'
     | '/kosa-kata/sinonim'
+    | '/tata-bahasa/$slug'
     | '/buku/'
     | '/gambar/'
     | '/hangeul/'
     | '/kosa-kata/'
+    | '/tata-bahasa/'
     | '/api/public/tts'
     | '/buku/$tahun/$bab'
     | '/buku/$tahun/'
@@ -298,10 +318,12 @@ export interface FileRouteTypes {
     | '/kosa-kata/antonim'
     | '/kosa-kata/semua'
     | '/kosa-kata/sinonim'
+    | '/tata-bahasa/$slug'
     | '/buku'
     | '/gambar'
     | '/hangeul'
     | '/kosa-kata'
+    | '/tata-bahasa'
     | '/api/public/tts'
     | '/buku/$tahun/$bab'
     | '/buku/$tahun'
@@ -326,10 +348,12 @@ export interface FileRouteTypes {
     | '/kosa-kata/antonim'
     | '/kosa-kata/semua'
     | '/kosa-kata/sinonim'
+    | '/tata-bahasa/$slug'
     | '/buku/'
     | '/gambar/'
     | '/hangeul/'
     | '/kosa-kata/'
+    | '/tata-bahasa/'
     | '/api/public/tts'
     | '/buku/$tahun/$bab'
     | '/buku/$tahun/'
@@ -355,10 +379,12 @@ export interface RootRouteChildren {
   KosaKataAntonimRoute: typeof KosaKataAntonimRoute
   KosaKataSemuaRoute: typeof KosaKataSemuaRoute
   KosaKataSinonimRoute: typeof KosaKataSinonimRoute
+  TataBahasaSlugRoute: typeof TataBahasaSlugRoute
   BukuIndexRoute: typeof BukuIndexRoute
   GambarIndexRoute: typeof GambarIndexRoute
   HangeulIndexRoute: typeof HangeulIndexRoute
   KosaKataIndexRoute: typeof KosaKataIndexRoute
+  TataBahasaIndexRoute: typeof TataBahasaIndexRoute
   ApiPublicTtsRoute: typeof ApiPublicTtsRoute
   BukuTahunBabRoute: typeof BukuTahunBabRoute
   BukuTahunIndexRoute: typeof BukuTahunIndexRoute
@@ -503,6 +529,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KosaKataSinonimRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tata-bahasa/': {
+      id: '/tata-bahasa/'
+      path: '/tata-bahasa'
+      fullPath: '/tata-bahasa/'
+      preLoaderRoute: typeof TataBahasaIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tata-bahasa/$slug': {
+      id: '/tata-bahasa/$slug'
+      path: '/tata-bahasa/$slug'
+      fullPath: '/tata-bahasa/$slug'
+      preLoaderRoute: typeof TataBahasaSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/tts': {
       id: '/api/public/tts'
       path: '/api/public/tts'
@@ -571,10 +611,12 @@ const rootRouteChildren: RootRouteChildren = {
   KosaKataAntonimRoute: KosaKataAntonimRoute,
   KosaKataSemuaRoute: KosaKataSemuaRoute,
   KosaKataSinonimRoute: KosaKataSinonimRoute,
+  TataBahasaSlugRoute: TataBahasaSlugRoute,
   BukuIndexRoute: BukuIndexRoute,
   GambarIndexRoute: GambarIndexRoute,
   HangeulIndexRoute: HangeulIndexRoute,
   KosaKataIndexRoute: KosaKataIndexRoute,
+  TataBahasaIndexRoute: TataBahasaIndexRoute,
   ApiPublicTtsRoute: ApiPublicTtsRoute,
   BukuTahunBabRoute: BukuTahunBabRoute,
   BukuTahunIndexRoute: BukuTahunIndexRoute,
