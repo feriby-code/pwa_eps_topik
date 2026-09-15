@@ -30,9 +30,11 @@ import { Route as KosaKataSemuaRouteImport } from './routes/kosa-kata.semua'
 import { Route as KosaKataSinonimRouteImport } from './routes/kosa-kata.sinonim'
 import { Route as TataBahasaIndexRouteImport } from './routes/tata-bahasa.index'
 import { Route as TataBahasaSlugRouteImport } from './routes/tata-bahasa.$slug'
+import { Route as UjiKemampuanIndexRouteImport } from './routes/uji-kemampuan.index'
 import { Route as ApiPublicTtsRouteImport } from './routes/api/public/tts'
 import { Route as BukuTahunIndexRouteImport } from './routes/buku.$tahun.index'
 import { Route as BukuTahunBabRouteImport } from './routes/buku.$tahun.$bab'
+import { Route as UjiKemampuanTebakTebakanIndexRouteImport } from './routes/uji-kemampuan.tebak-tebakan.index'
 import { Route as GambarBukuTahunIndexRouteImport } from './routes/gambar.buku.$tahun.index'
 import { Route as GambarBukuTahunBabRouteImport } from './routes/gambar.buku.$tahun.$bab'
 import { Route as KosaKataBukuTahunIndexRouteImport } from './routes/kosa-kata.buku.$tahun.index'
@@ -143,6 +145,11 @@ const TataBahasaSlugRoute = TataBahasaSlugRouteImport.update({
   path: '/tata-bahasa/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UjiKemampuanIndexRoute = UjiKemampuanIndexRouteImport.update({
+  id: '/uji-kemampuan/',
+  path: '/uji-kemampuan/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicTtsRoute = ApiPublicTtsRouteImport.update({
   id: '/api/public/tts',
   path: '/api/public/tts',
@@ -158,6 +165,12 @@ const BukuTahunBabRoute = BukuTahunBabRouteImport.update({
   path: '/buku/$tahun/$bab',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UjiKemampuanTebakTebakanIndexRoute =
+  UjiKemampuanTebakTebakanIndexRouteImport.update({
+    id: '/uji-kemampuan/tebak-tebakan/',
+    path: '/uji-kemampuan/tebak-tebakan/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const GambarBukuTahunIndexRoute = GambarBukuTahunIndexRouteImport.update({
   id: '/gambar/buku/$tahun/',
   path: '/gambar/buku/$tahun/',
@@ -201,9 +214,11 @@ export interface FileRoutesByFullPath {
   '/hangeul/': typeof HangeulIndexRoute
   '/kosa-kata/': typeof KosaKataIndexRoute
   '/tata-bahasa/': typeof TataBahasaIndexRoute
+  '/uji-kemampuan/': typeof UjiKemampuanIndexRoute
   '/api/public/tts': typeof ApiPublicTtsRoute
   '/buku/$tahun/$bab': typeof BukuTahunBabRoute
   '/buku/$tahun/': typeof BukuTahunIndexRoute
+  '/uji-kemampuan/tebak-tebakan/': typeof UjiKemampuanTebakTebakanIndexRoute
   '/gambar/buku/$tahun/$bab': typeof GambarBukuTahunBabRoute
   '/kosa-kata/buku/$tahun/$bab': typeof KosaKataBukuTahunBabRoute
   '/gambar/buku/$tahun/': typeof GambarBukuTahunIndexRoute
@@ -231,9 +246,11 @@ export interface FileRoutesByTo {
   '/hangeul': typeof HangeulIndexRoute
   '/kosa-kata': typeof KosaKataIndexRoute
   '/tata-bahasa': typeof TataBahasaIndexRoute
+  '/uji-kemampuan': typeof UjiKemampuanIndexRoute
   '/api/public/tts': typeof ApiPublicTtsRoute
   '/buku/$tahun/$bab': typeof BukuTahunBabRoute
   '/buku/$tahun': typeof BukuTahunIndexRoute
+  '/uji-kemampuan/tebak-tebakan': typeof UjiKemampuanTebakTebakanIndexRoute
   '/gambar/buku/$tahun/$bab': typeof GambarBukuTahunBabRoute
   '/kosa-kata/buku/$tahun/$bab': typeof KosaKataBukuTahunBabRoute
   '/gambar/buku/$tahun': typeof GambarBukuTahunIndexRoute
@@ -262,9 +279,11 @@ export interface FileRoutesById {
   '/hangeul/': typeof HangeulIndexRoute
   '/kosa-kata/': typeof KosaKataIndexRoute
   '/tata-bahasa/': typeof TataBahasaIndexRoute
+  '/uji-kemampuan/': typeof UjiKemampuanIndexRoute
   '/api/public/tts': typeof ApiPublicTtsRoute
   '/buku/$tahun/$bab': typeof BukuTahunBabRoute
   '/buku/$tahun/': typeof BukuTahunIndexRoute
+  '/uji-kemampuan/tebak-tebakan/': typeof UjiKemampuanTebakTebakanIndexRoute
   '/gambar/buku/$tahun/$bab': typeof GambarBukuTahunBabRoute
   '/kosa-kata/buku/$tahun/$bab': typeof KosaKataBukuTahunBabRoute
   '/gambar/buku/$tahun/': typeof GambarBukuTahunIndexRoute
@@ -294,9 +313,11 @@ export interface FileRouteTypes {
     | '/hangeul/'
     | '/kosa-kata/'
     | '/tata-bahasa/'
+    | '/uji-kemampuan/'
     | '/api/public/tts'
     | '/buku/$tahun/$bab'
     | '/buku/$tahun/'
+    | '/uji-kemampuan/tebak-tebakan/'
     | '/gambar/buku/$tahun/$bab'
     | '/kosa-kata/buku/$tahun/$bab'
     | '/gambar/buku/$tahun/'
@@ -324,9 +345,11 @@ export interface FileRouteTypes {
     | '/hangeul'
     | '/kosa-kata'
     | '/tata-bahasa'
+    | '/uji-kemampuan'
     | '/api/public/tts'
     | '/buku/$tahun/$bab'
     | '/buku/$tahun'
+    | '/uji-kemampuan/tebak-tebakan'
     | '/gambar/buku/$tahun/$bab'
     | '/kosa-kata/buku/$tahun/$bab'
     | '/gambar/buku/$tahun'
@@ -354,9 +377,11 @@ export interface FileRouteTypes {
     | '/hangeul/'
     | '/kosa-kata/'
     | '/tata-bahasa/'
+    | '/uji-kemampuan/'
     | '/api/public/tts'
     | '/buku/$tahun/$bab'
     | '/buku/$tahun/'
+    | '/uji-kemampuan/tebak-tebakan/'
     | '/gambar/buku/$tahun/$bab'
     | '/kosa-kata/buku/$tahun/$bab'
     | '/gambar/buku/$tahun/'
@@ -385,9 +410,11 @@ export interface RootRouteChildren {
   HangeulIndexRoute: typeof HangeulIndexRoute
   KosaKataIndexRoute: typeof KosaKataIndexRoute
   TataBahasaIndexRoute: typeof TataBahasaIndexRoute
+  UjiKemampuanIndexRoute: typeof UjiKemampuanIndexRoute
   ApiPublicTtsRoute: typeof ApiPublicTtsRoute
   BukuTahunBabRoute: typeof BukuTahunBabRoute
   BukuTahunIndexRoute: typeof BukuTahunIndexRoute
+  UjiKemampuanTebakTebakanIndexRoute: typeof UjiKemampuanTebakTebakanIndexRoute
   GambarBukuTahunBabRoute: typeof GambarBukuTahunBabRoute
   KosaKataBukuTahunBabRoute: typeof KosaKataBukuTahunBabRoute
   GambarBukuTahunIndexRoute: typeof GambarBukuTahunIndexRoute
@@ -543,6 +570,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TataBahasaSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/uji-kemampuan/': {
+      id: '/uji-kemampuan/'
+      path: '/uji-kemampuan'
+      fullPath: '/uji-kemampuan/'
+      preLoaderRoute: typeof UjiKemampuanIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/tts': {
       id: '/api/public/tts'
       path: '/api/public/tts'
@@ -562,6 +596,13 @@ declare module '@tanstack/react-router' {
       path: '/buku/$tahun/$bab'
       fullPath: '/buku/$tahun/$bab'
       preLoaderRoute: typeof BukuTahunBabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/uji-kemampuan/tebak-tebakan/': {
+      id: '/uji-kemampuan/tebak-tebakan/'
+      path: '/uji-kemampuan/tebak-tebakan'
+      fullPath: '/uji-kemampuan/tebak-tebakan/'
+      preLoaderRoute: typeof UjiKemampuanTebakTebakanIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gambar/buku/$tahun/': {
@@ -617,9 +658,11 @@ const rootRouteChildren: RootRouteChildren = {
   HangeulIndexRoute: HangeulIndexRoute,
   KosaKataIndexRoute: KosaKataIndexRoute,
   TataBahasaIndexRoute: TataBahasaIndexRoute,
+  UjiKemampuanIndexRoute: UjiKemampuanIndexRoute,
   ApiPublicTtsRoute: ApiPublicTtsRoute,
   BukuTahunBabRoute: BukuTahunBabRoute,
   BukuTahunIndexRoute: BukuTahunIndexRoute,
+  UjiKemampuanTebakTebakanIndexRoute: UjiKemampuanTebakTebakanIndexRoute,
   GambarBukuTahunBabRoute: GambarBukuTahunBabRoute,
   KosaKataBukuTahunBabRoute: KosaKataBukuTahunBabRoute,
   GambarBukuTahunIndexRoute: GambarBukuTahunIndexRoute,
