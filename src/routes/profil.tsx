@@ -1,0 +1,3 @@
+import { createFileRoute } from "@tanstack/react-router";
+import { ComingSoon } from "@/components/coming-soon";
+export const Route = createFileRoute("/profil")({ head: () => ({ meta: [{ title: "Profil — Annyeong" }, { name: "description", content: "Profil pengguna aplikasi belajar Annyeong." }, { property: "og:title", content: "Profil — Annyeong" }, { property: "og:description", content: "Profil pengguna aplikasi belajar Annyeong." }] }), component: () => <ComingSoon title="Profil" /> });
