@@ -17,6 +17,12 @@ import { Route as RoadmapRouteImport } from './routes/roadmap'
 import { Route as BukuIndexRouteImport } from './routes/buku.index'
 import { Route as BukuPencarianRouteImport } from './routes/buku.pencarian'
 import { Route as FiturSlugRouteImport } from './routes/fitur.$slug'
+import { Route as HangeulIndexRouteImport } from './routes/hangeul.index'
+import { Route as HangeulAngkaRouteImport } from './routes/hangeul.angka'
+import { Route as HangeulMataUangRouteImport } from './routes/hangeul.mata-uang'
+import { Route as HangeulSatuanRouteImport } from './routes/hangeul.satuan'
+import { Route as HangeulVokalKonsonanRouteImport } from './routes/hangeul.vokal-konsonan'
+import { Route as ApiPublicTtsRouteImport } from './routes/api/public/tts'
 import { Route as BukuTahunIndexRouteImport } from './routes/buku.$tahun.index'
 import { Route as BukuTahunBabRouteImport } from './routes/buku.$tahun.$bab'
 
@@ -60,6 +66,36 @@ const FiturSlugRoute = FiturSlugRouteImport.update({
   path: '/fitur/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HangeulIndexRoute = HangeulIndexRouteImport.update({
+  id: '/hangeul/',
+  path: '/hangeul/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HangeulAngkaRoute = HangeulAngkaRouteImport.update({
+  id: '/hangeul/angka',
+  path: '/hangeul/angka',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HangeulMataUangRoute = HangeulMataUangRouteImport.update({
+  id: '/hangeul/mata-uang',
+  path: '/hangeul/mata-uang',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HangeulSatuanRoute = HangeulSatuanRouteImport.update({
+  id: '/hangeul/satuan',
+  path: '/hangeul/satuan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HangeulVokalKonsonanRoute = HangeulVokalKonsonanRouteImport.update({
+  id: '/hangeul/vokal-konsonan',
+  path: '/hangeul/vokal-konsonan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicTtsRoute = ApiPublicTtsRouteImport.update({
+  id: '/api/public/tts',
+  path: '/api/public/tts',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BukuTahunIndexRoute = BukuTahunIndexRouteImport.update({
   id: '/buku/$tahun/',
   path: '/buku/$tahun/',
@@ -79,7 +115,13 @@ export interface FileRoutesByFullPath {
   '/roadmap': typeof RoadmapRoute
   '/buku/pencarian': typeof BukuPencarianRoute
   '/fitur/$slug': typeof FiturSlugRoute
+  '/hangeul/angka': typeof HangeulAngkaRoute
+  '/hangeul/mata-uang': typeof HangeulMataUangRoute
+  '/hangeul/satuan': typeof HangeulSatuanRoute
+  '/hangeul/vokal-konsonan': typeof HangeulVokalKonsonanRoute
   '/buku/': typeof BukuIndexRoute
+  '/hangeul/': typeof HangeulIndexRoute
+  '/api/public/tts': typeof ApiPublicTtsRoute
   '/buku/$tahun/$bab': typeof BukuTahunBabRoute
   '/buku/$tahun/': typeof BukuTahunIndexRoute
 }
@@ -91,7 +133,13 @@ export interface FileRoutesByTo {
   '/roadmap': typeof RoadmapRoute
   '/buku/pencarian': typeof BukuPencarianRoute
   '/fitur/$slug': typeof FiturSlugRoute
+  '/hangeul/angka': typeof HangeulAngkaRoute
+  '/hangeul/mata-uang': typeof HangeulMataUangRoute
+  '/hangeul/satuan': typeof HangeulSatuanRoute
+  '/hangeul/vokal-konsonan': typeof HangeulVokalKonsonanRoute
   '/buku': typeof BukuIndexRoute
+  '/hangeul': typeof HangeulIndexRoute
+  '/api/public/tts': typeof ApiPublicTtsRoute
   '/buku/$tahun/$bab': typeof BukuTahunBabRoute
   '/buku/$tahun': typeof BukuTahunIndexRoute
 }
@@ -104,7 +152,13 @@ export interface FileRoutesById {
   '/roadmap': typeof RoadmapRoute
   '/buku/pencarian': typeof BukuPencarianRoute
   '/fitur/$slug': typeof FiturSlugRoute
+  '/hangeul/angka': typeof HangeulAngkaRoute
+  '/hangeul/mata-uang': typeof HangeulMataUangRoute
+  '/hangeul/satuan': typeof HangeulSatuanRoute
+  '/hangeul/vokal-konsonan': typeof HangeulVokalKonsonanRoute
   '/buku/': typeof BukuIndexRoute
+  '/hangeul/': typeof HangeulIndexRoute
+  '/api/public/tts': typeof ApiPublicTtsRoute
   '/buku/$tahun/$bab': typeof BukuTahunBabRoute
   '/buku/$tahun/': typeof BukuTahunIndexRoute
 }
@@ -118,7 +172,13 @@ export interface FileRouteTypes {
     | '/roadmap'
     | '/buku/pencarian'
     | '/fitur/$slug'
+    | '/hangeul/angka'
+    | '/hangeul/mata-uang'
+    | '/hangeul/satuan'
+    | '/hangeul/vokal-konsonan'
     | '/buku/'
+    | '/hangeul/'
+    | '/api/public/tts'
     | '/buku/$tahun/$bab'
     | '/buku/$tahun/'
   fileRoutesByTo: FileRoutesByTo
@@ -130,7 +190,13 @@ export interface FileRouteTypes {
     | '/roadmap'
     | '/buku/pencarian'
     | '/fitur/$slug'
+    | '/hangeul/angka'
+    | '/hangeul/mata-uang'
+    | '/hangeul/satuan'
+    | '/hangeul/vokal-konsonan'
     | '/buku'
+    | '/hangeul'
+    | '/api/public/tts'
     | '/buku/$tahun/$bab'
     | '/buku/$tahun'
   id:
@@ -142,7 +208,13 @@ export interface FileRouteTypes {
     | '/roadmap'
     | '/buku/pencarian'
     | '/fitur/$slug'
+    | '/hangeul/angka'
+    | '/hangeul/mata-uang'
+    | '/hangeul/satuan'
+    | '/hangeul/vokal-konsonan'
     | '/buku/'
+    | '/hangeul/'
+    | '/api/public/tts'
     | '/buku/$tahun/$bab'
     | '/buku/$tahun/'
   fileRoutesById: FileRoutesById
@@ -155,7 +227,13 @@ export interface RootRouteChildren {
   RoadmapRoute: typeof RoadmapRoute
   BukuPencarianRoute: typeof BukuPencarianRoute
   FiturSlugRoute: typeof FiturSlugRoute
+  HangeulAngkaRoute: typeof HangeulAngkaRoute
+  HangeulMataUangRoute: typeof HangeulMataUangRoute
+  HangeulSatuanRoute: typeof HangeulSatuanRoute
+  HangeulVokalKonsonanRoute: typeof HangeulVokalKonsonanRoute
   BukuIndexRoute: typeof BukuIndexRoute
+  HangeulIndexRoute: typeof HangeulIndexRoute
+  ApiPublicTtsRoute: typeof ApiPublicTtsRoute
   BukuTahunBabRoute: typeof BukuTahunBabRoute
   BukuTahunIndexRoute: typeof BukuTahunIndexRoute
 }
@@ -218,6 +296,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FiturSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/hangeul/': {
+      id: '/hangeul/'
+      path: '/hangeul'
+      fullPath: '/hangeul/'
+      preLoaderRoute: typeof HangeulIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hangeul/angka': {
+      id: '/hangeul/angka'
+      path: '/hangeul/angka'
+      fullPath: '/hangeul/angka'
+      preLoaderRoute: typeof HangeulAngkaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hangeul/mata-uang': {
+      id: '/hangeul/mata-uang'
+      path: '/hangeul/mata-uang'
+      fullPath: '/hangeul/mata-uang'
+      preLoaderRoute: typeof HangeulMataUangRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hangeul/satuan': {
+      id: '/hangeul/satuan'
+      path: '/hangeul/satuan'
+      fullPath: '/hangeul/satuan'
+      preLoaderRoute: typeof HangeulSatuanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hangeul/vokal-konsonan': {
+      id: '/hangeul/vokal-konsonan'
+      path: '/hangeul/vokal-konsonan'
+      fullPath: '/hangeul/vokal-konsonan'
+      preLoaderRoute: typeof HangeulVokalKonsonanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/tts': {
+      id: '/api/public/tts'
+      path: '/api/public/tts'
+      fullPath: '/api/public/tts'
+      preLoaderRoute: typeof ApiPublicTtsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/buku/$tahun/': {
       id: '/buku/$tahun/'
       path: '/buku/$tahun'
@@ -243,7 +363,13 @@ const rootRouteChildren: RootRouteChildren = {
   RoadmapRoute: RoadmapRoute,
   BukuPencarianRoute: BukuPencarianRoute,
   FiturSlugRoute: FiturSlugRoute,
+  HangeulAngkaRoute: HangeulAngkaRoute,
+  HangeulMataUangRoute: HangeulMataUangRoute,
+  HangeulSatuanRoute: HangeulSatuanRoute,
+  HangeulVokalKonsonanRoute: HangeulVokalKonsonanRoute,
   BukuIndexRoute: BukuIndexRoute,
+  HangeulIndexRoute: HangeulIndexRoute,
+  ApiPublicTtsRoute: ApiPublicTtsRoute,
   BukuTahunBabRoute: BukuTahunBabRoute,
   BukuTahunIndexRoute: BukuTahunIndexRoute,
 }
