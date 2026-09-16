@@ -14,6 +14,7 @@ import { Route as HasilRouteImport } from './routes/hasil'
 import { Route as LembagaRouteImport } from './routes/lembaga'
 import { Route as ProfilRouteImport } from './routes/profil'
 import { Route as RoadmapRouteImport } from './routes/roadmap'
+import { Route as BudayaInformasiIndexRouteImport } from './routes/budaya-informasi.index'
 import { Route as BukuIndexRouteImport } from './routes/buku.index'
 import { Route as BukuPencarianRouteImport } from './routes/buku.pencarian'
 import { Route as FiturSlugRouteImport } from './routes/fitur.$slug'
@@ -31,6 +32,9 @@ import { Route as KosaKataSinonimRouteImport } from './routes/kosa-kata.sinonim'
 import { Route as TataBahasaIndexRouteImport } from './routes/tata-bahasa.index'
 import { Route as TataBahasaSlugRouteImport } from './routes/tata-bahasa.$slug'
 import { Route as UjiKemampuanIndexRouteImport } from './routes/uji-kemampuan.index'
+import { Route as UjiKemampuanButaWarnaRouteImport } from './routes/uji-kemampuan.buta-warna'
+import { Route as UjiKemampuanListeningRouteImport } from './routes/uji-kemampuan.listening'
+import { Route as UjiKemampuanReadingRouteImport } from './routes/uji-kemampuan.reading'
 import { Route as ApiPublicTtsRouteImport } from './routes/api/public/tts'
 import { Route as BukuTahunIndexRouteImport } from './routes/buku.$tahun.index'
 import { Route as BukuTahunBabRouteImport } from './routes/buku.$tahun.$bab'
@@ -64,6 +68,11 @@ const ProfilRoute = ProfilRouteImport.update({
 const RoadmapRoute = RoadmapRouteImport.update({
   id: '/roadmap',
   path: '/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BudayaInformasiIndexRoute = BudayaInformasiIndexRouteImport.update({
+  id: '/budaya-informasi/',
+  path: '/budaya-informasi/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BukuIndexRoute = BukuIndexRouteImport.update({
@@ -151,6 +160,21 @@ const UjiKemampuanIndexRoute = UjiKemampuanIndexRouteImport.update({
   path: '/uji-kemampuan/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UjiKemampuanButaWarnaRoute = UjiKemampuanButaWarnaRouteImport.update({
+  id: '/uji-kemampuan/buta-warna',
+  path: '/uji-kemampuan/buta-warna',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UjiKemampuanListeningRoute = UjiKemampuanListeningRouteImport.update({
+  id: '/uji-kemampuan/listening',
+  path: '/uji-kemampuan/listening',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UjiKemampuanReadingRoute = UjiKemampuanReadingRouteImport.update({
+  id: '/uji-kemampuan/reading',
+  path: '/uji-kemampuan/reading',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicTtsRoute = ApiPublicTtsRouteImport.update({
   id: '/api/public/tts',
   path: '/api/public/tts',
@@ -215,6 +239,10 @@ export interface FileRoutesByFullPath {
   '/kosa-kata/semua': typeof KosaKataSemuaRoute
   '/kosa-kata/sinonim': typeof KosaKataSinonimRoute
   '/tata-bahasa/$slug': typeof TataBahasaSlugRoute
+  '/uji-kemampuan/buta-warna': typeof UjiKemampuanButaWarnaRoute
+  '/uji-kemampuan/listening': typeof UjiKemampuanListeningRoute
+  '/uji-kemampuan/reading': typeof UjiKemampuanReadingRoute
+  '/budaya-informasi/': typeof BudayaInformasiIndexRoute
   '/buku/': typeof BukuIndexRoute
   '/gambar/': typeof GambarIndexRoute
   '/hangeul/': typeof HangeulIndexRoute
@@ -248,6 +276,10 @@ export interface FileRoutesByTo {
   '/kosa-kata/semua': typeof KosaKataSemuaRoute
   '/kosa-kata/sinonim': typeof KosaKataSinonimRoute
   '/tata-bahasa/$slug': typeof TataBahasaSlugRoute
+  '/uji-kemampuan/buta-warna': typeof UjiKemampuanButaWarnaRoute
+  '/uji-kemampuan/listening': typeof UjiKemampuanListeningRoute
+  '/uji-kemampuan/reading': typeof UjiKemampuanReadingRoute
+  '/budaya-informasi': typeof BudayaInformasiIndexRoute
   '/buku': typeof BukuIndexRoute
   '/gambar': typeof GambarIndexRoute
   '/hangeul': typeof HangeulIndexRoute
@@ -282,6 +314,10 @@ export interface FileRoutesById {
   '/kosa-kata/semua': typeof KosaKataSemuaRoute
   '/kosa-kata/sinonim': typeof KosaKataSinonimRoute
   '/tata-bahasa/$slug': typeof TataBahasaSlugRoute
+  '/uji-kemampuan/buta-warna': typeof UjiKemampuanButaWarnaRoute
+  '/uji-kemampuan/listening': typeof UjiKemampuanListeningRoute
+  '/uji-kemampuan/reading': typeof UjiKemampuanReadingRoute
+  '/budaya-informasi/': typeof BudayaInformasiIndexRoute
   '/buku/': typeof BukuIndexRoute
   '/gambar/': typeof GambarIndexRoute
   '/hangeul/': typeof HangeulIndexRoute
@@ -317,6 +353,10 @@ export interface FileRouteTypes {
     | '/kosa-kata/semua'
     | '/kosa-kata/sinonim'
     | '/tata-bahasa/$slug'
+    | '/uji-kemampuan/buta-warna'
+    | '/uji-kemampuan/listening'
+    | '/uji-kemampuan/reading'
+    | '/budaya-informasi/'
     | '/buku/'
     | '/gambar/'
     | '/hangeul/'
@@ -350,6 +390,10 @@ export interface FileRouteTypes {
     | '/kosa-kata/semua'
     | '/kosa-kata/sinonim'
     | '/tata-bahasa/$slug'
+    | '/uji-kemampuan/buta-warna'
+    | '/uji-kemampuan/listening'
+    | '/uji-kemampuan/reading'
+    | '/budaya-informasi'
     | '/buku'
     | '/gambar'
     | '/hangeul'
@@ -383,6 +427,10 @@ export interface FileRouteTypes {
     | '/kosa-kata/semua'
     | '/kosa-kata/sinonim'
     | '/tata-bahasa/$slug'
+    | '/uji-kemampuan/buta-warna'
+    | '/uji-kemampuan/listening'
+    | '/uji-kemampuan/reading'
+    | '/budaya-informasi/'
     | '/buku/'
     | '/gambar/'
     | '/hangeul/'
@@ -417,6 +465,10 @@ export interface RootRouteChildren {
   KosaKataSemuaRoute: typeof KosaKataSemuaRoute
   KosaKataSinonimRoute: typeof KosaKataSinonimRoute
   TataBahasaSlugRoute: typeof TataBahasaSlugRoute
+  UjiKemampuanButaWarnaRoute: typeof UjiKemampuanButaWarnaRoute
+  UjiKemampuanListeningRoute: typeof UjiKemampuanListeningRoute
+  UjiKemampuanReadingRoute: typeof UjiKemampuanReadingRoute
+  BudayaInformasiIndexRoute: typeof BudayaInformasiIndexRoute
   BukuIndexRoute: typeof BukuIndexRoute
   GambarIndexRoute: typeof GambarIndexRoute
   HangeulIndexRoute: typeof HangeulIndexRoute
@@ -469,6 +521,13 @@ declare module '@tanstack/react-router' {
       path: '/roadmap'
       fullPath: '/roadmap'
       preLoaderRoute: typeof RoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/budaya-informasi/': {
+      id: '/budaya-informasi/'
+      path: '/budaya-informasi'
+      fullPath: '/budaya-informasi/'
+      preLoaderRoute: typeof BudayaInformasiIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/buku/': {
@@ -590,6 +649,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UjiKemampuanIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/uji-kemampuan/buta-warna': {
+      id: '/uji-kemampuan/buta-warna'
+      path: '/uji-kemampuan/buta-warna'
+      fullPath: '/uji-kemampuan/buta-warna'
+      preLoaderRoute: typeof UjiKemampuanButaWarnaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/uji-kemampuan/listening': {
+      id: '/uji-kemampuan/listening'
+      path: '/uji-kemampuan/listening'
+      fullPath: '/uji-kemampuan/listening'
+      preLoaderRoute: typeof UjiKemampuanListeningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/uji-kemampuan/reading': {
+      id: '/uji-kemampuan/reading'
+      path: '/uji-kemampuan/reading'
+      fullPath: '/uji-kemampuan/reading'
+      preLoaderRoute: typeof UjiKemampuanReadingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/tts': {
       id: '/api/public/tts'
       path: '/api/public/tts'
@@ -673,6 +753,10 @@ const rootRouteChildren: RootRouteChildren = {
   KosaKataSemuaRoute: KosaKataSemuaRoute,
   KosaKataSinonimRoute: KosaKataSinonimRoute,
   TataBahasaSlugRoute: TataBahasaSlugRoute,
+  UjiKemampuanButaWarnaRoute: UjiKemampuanButaWarnaRoute,
+  UjiKemampuanListeningRoute: UjiKemampuanListeningRoute,
+  UjiKemampuanReadingRoute: UjiKemampuanReadingRoute,
+  BudayaInformasiIndexRoute: BudayaInformasiIndexRoute,
   BukuIndexRoute: BukuIndexRoute,
   GambarIndexRoute: GambarIndexRoute,
   HangeulIndexRoute: HangeulIndexRoute,
