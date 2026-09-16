@@ -78,8 +78,9 @@ export function UjiKemampuanIndex() {
       judul: "UBT",
       deskripsi: "Simulasi ujian berbasis tablet/komputer resmi EPS-TOPIK",
       icon: GraduationCap,
-      aktif: false,
-      badge: "Coming Soon",
+      aktif: true,
+      to: "/uji-kemampuan/ubt" as const,
+      badge: "Tersedia",
     },
   ];
 

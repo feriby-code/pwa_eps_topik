@@ -35,6 +35,7 @@ import { Route as ApiPublicTtsRouteImport } from './routes/api/public/tts'
 import { Route as BukuTahunIndexRouteImport } from './routes/buku.$tahun.index'
 import { Route as BukuTahunBabRouteImport } from './routes/buku.$tahun.$bab'
 import { Route as UjiKemampuanTebakTebakanIndexRouteImport } from './routes/uji-kemampuan.tebak-tebakan.index'
+import { Route as UjiKemampuanUbtIndexRouteImport } from './routes/uji-kemampuan.ubt.index'
 import { Route as GambarBukuTahunIndexRouteImport } from './routes/gambar.buku.$tahun.index'
 import { Route as GambarBukuTahunBabRouteImport } from './routes/gambar.buku.$tahun.$bab'
 import { Route as KosaKataBukuTahunIndexRouteImport } from './routes/kosa-kata.buku.$tahun.index'
@@ -171,6 +172,11 @@ const UjiKemampuanTebakTebakanIndexRoute =
     path: '/uji-kemampuan/tebak-tebakan/',
     getParentRoute: () => rootRouteImport,
   } as any)
+const UjiKemampuanUbtIndexRoute = UjiKemampuanUbtIndexRouteImport.update({
+  id: '/uji-kemampuan/ubt/',
+  path: '/uji-kemampuan/ubt/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GambarBukuTahunIndexRoute = GambarBukuTahunIndexRouteImport.update({
   id: '/gambar/buku/$tahun/',
   path: '/gambar/buku/$tahun/',
@@ -219,6 +225,7 @@ export interface FileRoutesByFullPath {
   '/buku/$tahun/$bab': typeof BukuTahunBabRoute
   '/buku/$tahun/': typeof BukuTahunIndexRoute
   '/uji-kemampuan/tebak-tebakan/': typeof UjiKemampuanTebakTebakanIndexRoute
+  '/uji-kemampuan/ubt/': typeof UjiKemampuanUbtIndexRoute
   '/gambar/buku/$tahun/$bab': typeof GambarBukuTahunBabRoute
   '/kosa-kata/buku/$tahun/$bab': typeof KosaKataBukuTahunBabRoute
   '/gambar/buku/$tahun/': typeof GambarBukuTahunIndexRoute
@@ -251,6 +258,7 @@ export interface FileRoutesByTo {
   '/buku/$tahun/$bab': typeof BukuTahunBabRoute
   '/buku/$tahun': typeof BukuTahunIndexRoute
   '/uji-kemampuan/tebak-tebakan': typeof UjiKemampuanTebakTebakanIndexRoute
+  '/uji-kemampuan/ubt': typeof UjiKemampuanUbtIndexRoute
   '/gambar/buku/$tahun/$bab': typeof GambarBukuTahunBabRoute
   '/kosa-kata/buku/$tahun/$bab': typeof KosaKataBukuTahunBabRoute
   '/gambar/buku/$tahun': typeof GambarBukuTahunIndexRoute
@@ -284,6 +292,7 @@ export interface FileRoutesById {
   '/buku/$tahun/$bab': typeof BukuTahunBabRoute
   '/buku/$tahun/': typeof BukuTahunIndexRoute
   '/uji-kemampuan/tebak-tebakan/': typeof UjiKemampuanTebakTebakanIndexRoute
+  '/uji-kemampuan/ubt/': typeof UjiKemampuanUbtIndexRoute
   '/gambar/buku/$tahun/$bab': typeof GambarBukuTahunBabRoute
   '/kosa-kata/buku/$tahun/$bab': typeof KosaKataBukuTahunBabRoute
   '/gambar/buku/$tahun/': typeof GambarBukuTahunIndexRoute
@@ -318,6 +327,7 @@ export interface FileRouteTypes {
     | '/buku/$tahun/$bab'
     | '/buku/$tahun/'
     | '/uji-kemampuan/tebak-tebakan/'
+    | '/uji-kemampuan/ubt/'
     | '/gambar/buku/$tahun/$bab'
     | '/kosa-kata/buku/$tahun/$bab'
     | '/gambar/buku/$tahun/'
@@ -350,6 +360,7 @@ export interface FileRouteTypes {
     | '/buku/$tahun/$bab'
     | '/buku/$tahun'
     | '/uji-kemampuan/tebak-tebakan'
+    | '/uji-kemampuan/ubt'
     | '/gambar/buku/$tahun/$bab'
     | '/kosa-kata/buku/$tahun/$bab'
     | '/gambar/buku/$tahun'
@@ -382,6 +393,7 @@ export interface FileRouteTypes {
     | '/buku/$tahun/$bab'
     | '/buku/$tahun/'
     | '/uji-kemampuan/tebak-tebakan/'
+    | '/uji-kemampuan/ubt/'
     | '/gambar/buku/$tahun/$bab'
     | '/kosa-kata/buku/$tahun/$bab'
     | '/gambar/buku/$tahun/'
@@ -415,6 +427,7 @@ export interface RootRouteChildren {
   BukuTahunBabRoute: typeof BukuTahunBabRoute
   BukuTahunIndexRoute: typeof BukuTahunIndexRoute
   UjiKemampuanTebakTebakanIndexRoute: typeof UjiKemampuanTebakTebakanIndexRoute
+  UjiKemampuanUbtIndexRoute: typeof UjiKemampuanUbtIndexRoute
   GambarBukuTahunBabRoute: typeof GambarBukuTahunBabRoute
   KosaKataBukuTahunBabRoute: typeof KosaKataBukuTahunBabRoute
   GambarBukuTahunIndexRoute: typeof GambarBukuTahunIndexRoute
@@ -605,6 +618,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UjiKemampuanTebakTebakanIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/uji-kemampuan/ubt/': {
+      id: '/uji-kemampuan/ubt/'
+      path: '/uji-kemampuan/ubt'
+      fullPath: '/uji-kemampuan/ubt/'
+      preLoaderRoute: typeof UjiKemampuanUbtIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/gambar/buku/$tahun/': {
       id: '/gambar/buku/$tahun/'
       path: '/gambar/buku/$tahun'
@@ -663,6 +683,7 @@ const rootRouteChildren: RootRouteChildren = {
   BukuTahunBabRoute: BukuTahunBabRoute,
   BukuTahunIndexRoute: BukuTahunIndexRoute,
   UjiKemampuanTebakTebakanIndexRoute: UjiKemampuanTebakTebakanIndexRoute,
+  UjiKemampuanUbtIndexRoute: UjiKemampuanUbtIndexRoute,
   GambarBukuTahunBabRoute: GambarBukuTahunBabRoute,
   KosaKataBukuTahunBabRoute: KosaKataBukuTahunBabRoute,
   GambarBukuTahunIndexRoute: GambarBukuTahunIndexRoute,
