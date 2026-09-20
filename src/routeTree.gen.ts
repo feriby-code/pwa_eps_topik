@@ -10,13 +10,13 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AdminRouteImport } from './routes/admin'
 import { Route as DaftarRouteImport } from './routes/daftar'
 import { Route as HasilRouteImport } from './routes/hasil'
 import { Route as LembagaRouteImport } from './routes/lembaga'
 import { Route as MasukRouteImport } from './routes/masuk'
 import { Route as ProfilRouteImport } from './routes/profil'
 import { Route as RoadmapRouteImport } from './routes/roadmap'
+import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as BudayaInformasiIndexRouteImport } from './routes/budaya-informasi.index'
 import { Route as BukuIndexRouteImport } from './routes/buku.index'
 import { Route as BukuPencarianRouteImport } from './routes/buku.pencarian'
@@ -38,6 +38,8 @@ import { Route as UjiKemampuanIndexRouteImport } from './routes/uji-kemampuan.in
 import { Route as UjiKemampuanButaWarnaRouteImport } from './routes/uji-kemampuan.buta-warna'
 import { Route as UjiKemampuanListeningRouteImport } from './routes/uji-kemampuan.listening'
 import { Route as UjiKemampuanReadingRouteImport } from './routes/uji-kemampuan.reading'
+import { Route as AdminBukuIndexRouteImport } from './routes/admin.buku.index'
+import { Route as AdminBukuTahunRouteImport } from './routes/admin.buku.$tahun'
 import { Route as ApiPublicTtsRouteImport } from './routes/api/public/tts'
 import { Route as BukuTahunIndexRouteImport } from './routes/buku.$tahun.index'
 import { Route as BukuTahunBabRouteImport } from './routes/buku.$tahun.$bab'
@@ -51,11 +53,6 @@ import { Route as KosaKataBukuTahunBabRouteImport } from './routes/kosa-kata.buk
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminRoute = AdminRouteImport.update({
-  id: '/admin',
-  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DaftarRoute = DaftarRouteImport.update({
@@ -86,6 +83,11 @@ const ProfilRoute = ProfilRouteImport.update({
 const RoadmapRoute = RoadmapRouteImport.update({
   id: '/roadmap',
   path: '/roadmap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminIndexRoute = AdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BudayaInformasiIndexRoute = BudayaInformasiIndexRouteImport.update({
@@ -193,6 +195,16 @@ const UjiKemampuanReadingRoute = UjiKemampuanReadingRouteImport.update({
   path: '/uji-kemampuan/reading',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminBukuIndexRoute = AdminBukuIndexRouteImport.update({
+  id: '/admin/buku/',
+  path: '/admin/buku/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminBukuTahunRoute = AdminBukuTahunRouteImport.update({
+  id: '/admin/buku/$tahun',
+  path: '/admin/buku/$tahun',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiPublicTtsRoute = ApiPublicTtsRouteImport.update({
   id: '/api/public/tts',
   path: '/api/public/tts',
@@ -242,7 +254,6 @@ const KosaKataBukuTahunBabRoute = KosaKataBukuTahunBabRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
   '/daftar': typeof DaftarRoute
   '/hasil': typeof HasilRoute
   '/lembaga': typeof LembagaRoute
@@ -263,6 +274,7 @@ export interface FileRoutesByFullPath {
   '/uji-kemampuan/buta-warna': typeof UjiKemampuanButaWarnaRoute
   '/uji-kemampuan/listening': typeof UjiKemampuanListeningRoute
   '/uji-kemampuan/reading': typeof UjiKemampuanReadingRoute
+  '/admin/': typeof AdminIndexRoute
   '/budaya-informasi/': typeof BudayaInformasiIndexRoute
   '/buku/': typeof BukuIndexRoute
   '/gambar/': typeof GambarIndexRoute
@@ -270,8 +282,10 @@ export interface FileRoutesByFullPath {
   '/kosa-kata/': typeof KosaKataIndexRoute
   '/tata-bahasa/': typeof TataBahasaIndexRoute
   '/uji-kemampuan/': typeof UjiKemampuanIndexRoute
+  '/admin/buku/$tahun': typeof AdminBukuTahunRoute
   '/api/public/tts': typeof ApiPublicTtsRoute
   '/buku/$tahun/$bab': typeof BukuTahunBabRoute
+  '/admin/buku/': typeof AdminBukuIndexRoute
   '/buku/$tahun/': typeof BukuTahunIndexRoute
   '/uji-kemampuan/tebak-tebakan/': typeof UjiKemampuanTebakTebakanIndexRoute
   '/uji-kemampuan/ubt/': typeof UjiKemampuanUbtIndexRoute
@@ -282,7 +296,6 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
   '/daftar': typeof DaftarRoute
   '/hasil': typeof HasilRoute
   '/lembaga': typeof LembagaRoute
@@ -303,6 +316,7 @@ export interface FileRoutesByTo {
   '/uji-kemampuan/buta-warna': typeof UjiKemampuanButaWarnaRoute
   '/uji-kemampuan/listening': typeof UjiKemampuanListeningRoute
   '/uji-kemampuan/reading': typeof UjiKemampuanReadingRoute
+  '/admin': typeof AdminIndexRoute
   '/budaya-informasi': typeof BudayaInformasiIndexRoute
   '/buku': typeof BukuIndexRoute
   '/gambar': typeof GambarIndexRoute
@@ -310,8 +324,10 @@ export interface FileRoutesByTo {
   '/kosa-kata': typeof KosaKataIndexRoute
   '/tata-bahasa': typeof TataBahasaIndexRoute
   '/uji-kemampuan': typeof UjiKemampuanIndexRoute
+  '/admin/buku/$tahun': typeof AdminBukuTahunRoute
   '/api/public/tts': typeof ApiPublicTtsRoute
   '/buku/$tahun/$bab': typeof BukuTahunBabRoute
+  '/admin/buku': typeof AdminBukuIndexRoute
   '/buku/$tahun': typeof BukuTahunIndexRoute
   '/uji-kemampuan/tebak-tebakan': typeof UjiKemampuanTebakTebakanIndexRoute
   '/uji-kemampuan/ubt': typeof UjiKemampuanUbtIndexRoute
@@ -323,7 +339,6 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/admin': typeof AdminRoute
   '/daftar': typeof DaftarRoute
   '/hasil': typeof HasilRoute
   '/lembaga': typeof LembagaRoute
@@ -344,6 +359,7 @@ export interface FileRoutesById {
   '/uji-kemampuan/buta-warna': typeof UjiKemampuanButaWarnaRoute
   '/uji-kemampuan/listening': typeof UjiKemampuanListeningRoute
   '/uji-kemampuan/reading': typeof UjiKemampuanReadingRoute
+  '/admin/': typeof AdminIndexRoute
   '/budaya-informasi/': typeof BudayaInformasiIndexRoute
   '/buku/': typeof BukuIndexRoute
   '/gambar/': typeof GambarIndexRoute
@@ -351,8 +367,10 @@ export interface FileRoutesById {
   '/kosa-kata/': typeof KosaKataIndexRoute
   '/tata-bahasa/': typeof TataBahasaIndexRoute
   '/uji-kemampuan/': typeof UjiKemampuanIndexRoute
+  '/admin/buku/$tahun': typeof AdminBukuTahunRoute
   '/api/public/tts': typeof ApiPublicTtsRoute
   '/buku/$tahun/$bab': typeof BukuTahunBabRoute
+  '/admin/buku/': typeof AdminBukuIndexRoute
   '/buku/$tahun/': typeof BukuTahunIndexRoute
   '/uji-kemampuan/tebak-tebakan/': typeof UjiKemampuanTebakTebakanIndexRoute
   '/uji-kemampuan/ubt/': typeof UjiKemampuanUbtIndexRoute
@@ -365,7 +383,6 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/admin'
     | '/daftar'
     | '/hasil'
     | '/lembaga'
@@ -386,6 +403,7 @@ export interface FileRouteTypes {
     | '/uji-kemampuan/buta-warna'
     | '/uji-kemampuan/listening'
     | '/uji-kemampuan/reading'
+    | '/admin/'
     | '/budaya-informasi/'
     | '/buku/'
     | '/gambar/'
@@ -393,8 +411,10 @@ export interface FileRouteTypes {
     | '/kosa-kata/'
     | '/tata-bahasa/'
     | '/uji-kemampuan/'
+    | '/admin/buku/$tahun'
     | '/api/public/tts'
     | '/buku/$tahun/$bab'
+    | '/admin/buku/'
     | '/buku/$tahun/'
     | '/uji-kemampuan/tebak-tebakan/'
     | '/uji-kemampuan/ubt/'
@@ -405,7 +425,6 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/admin'
     | '/daftar'
     | '/hasil'
     | '/lembaga'
@@ -426,6 +445,7 @@ export interface FileRouteTypes {
     | '/uji-kemampuan/buta-warna'
     | '/uji-kemampuan/listening'
     | '/uji-kemampuan/reading'
+    | '/admin'
     | '/budaya-informasi'
     | '/buku'
     | '/gambar'
@@ -433,8 +453,10 @@ export interface FileRouteTypes {
     | '/kosa-kata'
     | '/tata-bahasa'
     | '/uji-kemampuan'
+    | '/admin/buku/$tahun'
     | '/api/public/tts'
     | '/buku/$tahun/$bab'
+    | '/admin/buku'
     | '/buku/$tahun'
     | '/uji-kemampuan/tebak-tebakan'
     | '/uji-kemampuan/ubt'
@@ -445,7 +467,6 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/admin'
     | '/daftar'
     | '/hasil'
     | '/lembaga'
@@ -466,6 +487,7 @@ export interface FileRouteTypes {
     | '/uji-kemampuan/buta-warna'
     | '/uji-kemampuan/listening'
     | '/uji-kemampuan/reading'
+    | '/admin/'
     | '/budaya-informasi/'
     | '/buku/'
     | '/gambar/'
@@ -473,8 +495,10 @@ export interface FileRouteTypes {
     | '/kosa-kata/'
     | '/tata-bahasa/'
     | '/uji-kemampuan/'
+    | '/admin/buku/$tahun'
     | '/api/public/tts'
     | '/buku/$tahun/$bab'
+    | '/admin/buku/'
     | '/buku/$tahun/'
     | '/uji-kemampuan/tebak-tebakan/'
     | '/uji-kemampuan/ubt/'
@@ -486,7 +510,6 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AdminRoute: typeof AdminRoute
   DaftarRoute: typeof DaftarRoute
   HasilRoute: typeof HasilRoute
   LembagaRoute: typeof LembagaRoute
@@ -507,6 +530,7 @@ export interface RootRouteChildren {
   UjiKemampuanButaWarnaRoute: typeof UjiKemampuanButaWarnaRoute
   UjiKemampuanListeningRoute: typeof UjiKemampuanListeningRoute
   UjiKemampuanReadingRoute: typeof UjiKemampuanReadingRoute
+  AdminIndexRoute: typeof AdminIndexRoute
   BudayaInformasiIndexRoute: typeof BudayaInformasiIndexRoute
   BukuIndexRoute: typeof BukuIndexRoute
   GambarIndexRoute: typeof GambarIndexRoute
@@ -514,8 +538,10 @@ export interface RootRouteChildren {
   KosaKataIndexRoute: typeof KosaKataIndexRoute
   TataBahasaIndexRoute: typeof TataBahasaIndexRoute
   UjiKemampuanIndexRoute: typeof UjiKemampuanIndexRoute
+  AdminBukuTahunRoute: typeof AdminBukuTahunRoute
   ApiPublicTtsRoute: typeof ApiPublicTtsRoute
   BukuTahunBabRoute: typeof BukuTahunBabRoute
+  AdminBukuIndexRoute: typeof AdminBukuIndexRoute
   BukuTahunIndexRoute: typeof BukuTahunIndexRoute
   UjiKemampuanTebakTebakanIndexRoute: typeof UjiKemampuanTebakTebakanIndexRoute
   UjiKemampuanUbtIndexRoute: typeof UjiKemampuanUbtIndexRoute
@@ -532,13 +558,6 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin': {
-      id: '/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/daftar': {
@@ -581,6 +600,13 @@ declare module '@tanstack/react-router' {
       path: '/roadmap'
       fullPath: '/roadmap'
       preLoaderRoute: typeof RoadmapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/': {
+      id: '/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AdminIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/budaya-informasi/': {
@@ -730,6 +756,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UjiKemampuanReadingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/buku/': {
+      id: '/admin/buku/'
+      path: '/admin/buku'
+      fullPath: '/admin/buku/'
+      preLoaderRoute: typeof AdminBukuIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/buku/$tahun': {
+      id: '/admin/buku/$tahun'
+      path: '/admin/buku/$tahun'
+      fullPath: '/admin/buku/$tahun'
+      preLoaderRoute: typeof AdminBukuTahunRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/tts': {
       id: '/api/public/tts'
       path: '/api/public/tts'
@@ -798,7 +838,6 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AdminRoute: AdminRoute,
   DaftarRoute: DaftarRoute,
   HasilRoute: HasilRoute,
   LembagaRoute: LembagaRoute,
@@ -819,6 +858,7 @@ const rootRouteChildren: RootRouteChildren = {
   UjiKemampuanButaWarnaRoute: UjiKemampuanButaWarnaRoute,
   UjiKemampuanListeningRoute: UjiKemampuanListeningRoute,
   UjiKemampuanReadingRoute: UjiKemampuanReadingRoute,
+  AdminIndexRoute: AdminIndexRoute,
   BudayaInformasiIndexRoute: BudayaInformasiIndexRoute,
   BukuIndexRoute: BukuIndexRoute,
   GambarIndexRoute: GambarIndexRoute,
@@ -826,8 +866,10 @@ const rootRouteChildren: RootRouteChildren = {
   KosaKataIndexRoute: KosaKataIndexRoute,
   TataBahasaIndexRoute: TataBahasaIndexRoute,
   UjiKemampuanIndexRoute: UjiKemampuanIndexRoute,
+  AdminBukuTahunRoute: AdminBukuTahunRoute,
   ApiPublicTtsRoute: ApiPublicTtsRoute,
   BukuTahunBabRoute: BukuTahunBabRoute,
+  AdminBukuIndexRoute: AdminBukuIndexRoute,
   BukuTahunIndexRoute: BukuTahunIndexRoute,
   UjiKemampuanTebakTebakanIndexRoute: UjiKemampuanTebakTebakanIndexRoute,
   UjiKemampuanUbtIndexRoute: UjiKemampuanUbtIndexRoute,

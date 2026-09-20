@@ -1,12 +1,12 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { BarChart3, Building2, Construction, GraduationCap, LogOut, ShieldCheck, Trophy, Users } from "lucide-react";
+import { BarChart3, BookOpen, Building2, Construction, GraduationCap, LogOut, ShieldCheck, Trophy, Users } from "lucide-react";
 import { useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/lib/auth-context";
 import { labelPeran, type Modul } from "@/lib/auth-types";
 
-export const Route = createFileRoute("/admin")({
+export const Route = createFileRoute("/admin/")({
   head: () => ({
     meta: [
       { title: "Dashboard Admin — Annyeong" },
@@ -69,14 +69,31 @@ function HalamanAdmin() {
           </div>
         </div>
 
-        <section className="mt-7 rounded-2xl border border-dashed border-border/70 bg-surface p-6 text-center">
-          <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-primary-soft">
-            <Construction className="h-8 w-8 text-primary" />
+        <h3 className="mt-7 text-sm font-bold text-foreground">Pengelolaan data</h3>
+        <Link
+          to="/admin/buku"
+          className="group mt-3 flex items-center gap-3 rounded-2xl border border-border bg-surface p-4 shadow-soft transition-all hover:-translate-y-0.5 hover:border-primary/30"
+        >
+          <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary-soft text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+            <BookOpen className="h-5 w-5" />
+          </span>
+          <span className="min-w-0 flex-1">
+            <strong className="block text-sm">Buku</strong>
+            <span className="mt-0.5 block text-xs text-muted-foreground">
+              Unggah PDF dan audio asli untuk tiap bab
+            </span>
+          </span>
+          <Badge variant="secondary" className="rounded-full">
+            Siap dipakai
+          </Badge>
+        </Link>
+
+        <section className="mt-3 rounded-2xl border border-dashed border-border/70 bg-surface p-5 text-center">
+          <div className="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-muted">
+            <Construction className="h-6 w-6 text-muted-foreground" />
           </div>
-          <h2 className="mt-4 text-lg font-bold text-foreground">Dashboard segera hadir</h2>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Fitur pengelolaan data masih disiapkan. Untuk sekarang halaman ini memastikan hak akses setiap peran sudah
-            berjalan.
+          <p className="mt-3 text-sm text-muted-foreground">
+            Menu lain (pengguna, lembaga, hasil ujian) masih disiapkan.
           </p>
         </section>
 
