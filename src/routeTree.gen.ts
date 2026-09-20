@@ -10,8 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as DaftarRouteImport } from './routes/daftar'
 import { Route as HasilRouteImport } from './routes/hasil'
 import { Route as LembagaRouteImport } from './routes/lembaga'
+import { Route as MasukRouteImport } from './routes/masuk'
 import { Route as ProfilRouteImport } from './routes/profil'
 import { Route as RoadmapRouteImport } from './routes/roadmap'
 import { Route as BudayaInformasiIndexRouteImport } from './routes/budaya-informasi.index'
@@ -50,6 +53,16 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DaftarRoute = DaftarRouteImport.update({
+  id: '/daftar',
+  path: '/daftar',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HasilRoute = HasilRouteImport.update({
   id: '/hasil',
   path: '/hasil',
@@ -58,6 +71,11 @@ const HasilRoute = HasilRouteImport.update({
 const LembagaRoute = LembagaRouteImport.update({
   id: '/lembaga',
   path: '/lembaga',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MasukRoute = MasukRouteImport.update({
+  id: '/masuk',
+  path: '/masuk',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProfilRoute = ProfilRouteImport.update({
@@ -224,8 +242,11 @@ const KosaKataBukuTahunBabRoute = KosaKataBukuTahunBabRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/daftar': typeof DaftarRoute
   '/hasil': typeof HasilRoute
   '/lembaga': typeof LembagaRoute
+  '/masuk': typeof MasukRoute
   '/profil': typeof ProfilRoute
   '/roadmap': typeof RoadmapRoute
   '/buku/pencarian': typeof BukuPencarianRoute
@@ -261,8 +282,11 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/daftar': typeof DaftarRoute
   '/hasil': typeof HasilRoute
   '/lembaga': typeof LembagaRoute
+  '/masuk': typeof MasukRoute
   '/profil': typeof ProfilRoute
   '/roadmap': typeof RoadmapRoute
   '/buku/pencarian': typeof BukuPencarianRoute
@@ -299,8 +323,11 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/admin': typeof AdminRoute
+  '/daftar': typeof DaftarRoute
   '/hasil': typeof HasilRoute
   '/lembaga': typeof LembagaRoute
+  '/masuk': typeof MasukRoute
   '/profil': typeof ProfilRoute
   '/roadmap': typeof RoadmapRoute
   '/buku/pencarian': typeof BukuPencarianRoute
@@ -338,8 +365,11 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/admin'
+    | '/daftar'
     | '/hasil'
     | '/lembaga'
+    | '/masuk'
     | '/profil'
     | '/roadmap'
     | '/buku/pencarian'
@@ -375,8 +405,11 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/admin'
+    | '/daftar'
     | '/hasil'
     | '/lembaga'
+    | '/masuk'
     | '/profil'
     | '/roadmap'
     | '/buku/pencarian'
@@ -412,8 +445,11 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/admin'
+    | '/daftar'
     | '/hasil'
     | '/lembaga'
+    | '/masuk'
     | '/profil'
     | '/roadmap'
     | '/buku/pencarian'
@@ -450,8 +486,11 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AdminRoute: typeof AdminRoute
+  DaftarRoute: typeof DaftarRoute
   HasilRoute: typeof HasilRoute
   LembagaRoute: typeof LembagaRoute
+  MasukRoute: typeof MasukRoute
   ProfilRoute: typeof ProfilRoute
   RoadmapRoute: typeof RoadmapRoute
   BukuPencarianRoute: typeof BukuPencarianRoute
@@ -495,6 +534,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/daftar': {
+      id: '/daftar'
+      path: '/daftar'
+      fullPath: '/daftar'
+      preLoaderRoute: typeof DaftarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/hasil': {
       id: '/hasil'
       path: '/hasil'
@@ -507,6 +560,13 @@ declare module '@tanstack/react-router' {
       path: '/lembaga'
       fullPath: '/lembaga'
       preLoaderRoute: typeof LembagaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/masuk': {
+      id: '/masuk'
+      path: '/masuk'
+      fullPath: '/masuk'
+      preLoaderRoute: typeof MasukRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/profil': {
@@ -738,8 +798,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AdminRoute: AdminRoute,
+  DaftarRoute: DaftarRoute,
   HasilRoute: HasilRoute,
   LembagaRoute: LembagaRoute,
+  MasukRoute: MasukRoute,
   ProfilRoute: ProfilRoute,
   RoadmapRoute: RoadmapRoute,
   BukuPencarianRoute: BukuPencarianRoute,
